@@ -1,0 +1,29 @@
+/*
+ * jQuery Basic Table
+ * Author: Jerry Low
+ */
+
+table.bt thead {
+  display: none;
+}
+
+table.bt tbody td {
+  border: none;
+  display: block;
+  vertical-align: top;
+}
+
+table.bt tbody td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 6.5em;
+  display: inline-block;
+}
+
+table.bt tbody td.bt-hide {
+  display: none;
+}
+
+table.bt tbody td .bt-content {
+  vertical-align: top;
+}

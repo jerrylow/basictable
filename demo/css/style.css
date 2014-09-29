@@ -1,0 +1,267 @@
+/*
+ * Basic Table Demo CSS.
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #e4ebeb;
+  color: #636363;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+}
+
+#page {
+  padding: 50px 100px;
+}
+
+@media only screen and (max-width: 568px) {
+  #page {
+    padding: 50px 30px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  color: #5b8e8d;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75em;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 568px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+h2 {
+  color: #82bcba;
+  font-size: 1.75rem;
+  margin-bottom: 0.75em;
+  margin-top: 2em;
+}
+
+h3 {
+  color: #82bcba;
+  font-size: 1.25rem;
+  margin-bottom: 0.75em;
+  margin-top: 2em;
+}
+
+a,
+a:visited,
+a:active {
+  color: #5b8e8d;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #53bcba;
+}
+
+p {
+  font-size: 1.125rem;
+  word-break: break-word;
+}
+
+p.credits {
+  font-size: .8125rem;
+  margin-top: 6em;
+}
+
+@media only screen and (max-width: 568px) {
+  .phone-block {
+    display: block;
+  }
+
+  .phone-hide {
+    display: none;
+  }
+}
+
+code {
+  background: #c6d8d8;
+  border-radius: 4px;
+  color: #3d6969;
+  display: block;
+  margin: 2em 0;
+  padding: 15px;
+  position: relative;
+}
+
+code:after {
+  bottom: 5px;
+  color: #e4ebeb;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  position: absolute;
+  right: 10px;
+  text-transform: uppercase;
+}
+
+code.css:after {
+  content: 'css';
+}
+
+code.js:after {
+  content: 'js';
+}
+
+table {
+  background: white;
+  border-collapse: collapse;
+  margin: 1.25em 0 0;
+  width: 100%;
+}
+
+table tr,
+table th,
+table td {
+  border: none;
+  border-bottom: 1px solid #e4ebeb;
+  font-family: 'Lato', sans-serif;
+  font-size: .875rem;
+}
+
+table th,
+table td {
+  padding: 10px 12px;
+  text-align: left;
+}
+
+table th {
+  background: #56a2cf;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+table tr td {
+  background: #eaf3f5;
+  color: #999999;
+}
+
+table tr:nth-of-type(2n+2) td {
+  background: #ffffff;
+}
+
+table.bt tbody td {
+  font-size: .8125rem;
+  padding: 0;
+}
+
+table.bt tbody td:before {
+  background: #56a2cf;
+  color: white;
+  margin-right: 10px;
+  padding: 2px 10px;
+}
+
+table.bt tbody td .bt-content {
+  display: inline-block;
+  padding: 2px 5px;
+}
+
+table.bt tbody td:first-of-type:before,
+table.bt tbody td:first-of-type .bt-content {
+  padding-top: 10px;
+}
+
+table.bt tbody td:last-of-type:before,
+table.bt tbody td:last-of-type .bt-content {
+  padding-bottom: 10px;
+}
+
+/* 
+ * Example 4:
+ * Media query over js resize
+ */
+@media only screen and (max-width: 568px) {
+  #table-no-resize thead {
+    display: none;
+  }
+
+  #table-no-resize tbody td {
+    border: none !important;
+    display: block;
+    font-size: .8125rem;
+    padding: 0;
+    vertical-align: top;
+  }
+
+  #table-no-resize tbody td:before {
+    background: #56a2cf;
+    content: attr(data-th) ": ";
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 2px 10px;
+    width: 6.5em;
+  }
+
+  #table-no-resize tbody td .bt-content {
+    display: inline-block;
+    padding: 2px 5px;
+  }
+
+  #table-no-resize tbody td:first-of-type:before,
+  #table-no-resize tbody td:first-of-type .bt-content {
+    padding-top: 10px;
+  }
+
+  #table-no-resize tbody td:last-of-type:before,
+  #table-no-resize tbody td:last-of-type .bt-content {
+    padding-bottom: 10px;
+  }
+}
+
+/* 
+ * Example 5:
+ * Two axis styling
+ */
+table.two-axis tr td:first-of-type {
+  background: #cadde1;
+}
+
+@media only screen and (max-width: 568px) {
+  table.two-axis tr td:first-of-type,
+  table.two-axis tr:nth-of-type(2n+2) td:first-of-type,
+  table.two-axis tr td:first-of-type:before {
+    background: #3584b3;
+    color: #ffffff;
+  }
+
+  table.two-axis tr td:first-of-type {
+    border-bottom: 1px solid #e4ebeb;
+  }
+
+  table.two-axis tr td:first-of-type:before {
+    padding-bottom: 10px;
+  }
+}
+
+/* 
+ * Example 6:
+ * Max height
+ */
+table.bt.max-height {
+  max-height: 300px;
+  overflow: auto;
+}
