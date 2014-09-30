@@ -6,7 +6,7 @@
 (function($) {
   $.fn.basictable = function(options) {
     var setup = function(table, data) {
-      if (data.tableWrapper) {
+      if (data.tableWrap) {
         table.wrap('<div class="bt-wrapper"></div>');
       }
 
@@ -90,9 +90,14 @@
     var destroy = function(table, data) {
       table.find('td').removeAttr('data-th');
 
+      if (data.tableWrap) {
+        table.unwrap();
+      }
+
       if (data.contentWrap) {
         unwrap(table);
       }
+
       table.removeData('basictable');
     };
 
@@ -158,6 +163,6 @@
     disableResize: false,
     forceResponsive: true,
     noResize: false,
-    tableWrapper: false
+    tableWrap: false
   };
 })(jQuery);
