@@ -5,7 +5,11 @@
 
 (function($) {
   $.fn.basictable = function(options) {
-    var headings = function(table, data) {
+    var setup = function(table, data) {
+      if (data.tableWrapper) {
+        table.wrap('<div class="bt-wrapper"></div>');
+      }
+
       var format = '';
 
       if (table.find('thead th').length) {
@@ -51,28 +55,36 @@
       // responsive is turned off.
       if (!data.forceResponsive) {
         if (table.removeClass('bt').outerWidth() > table.parent().width()) {
-          start(table);
+          start(table, data);
         }
         else {
-          end(table);
+          end(table, data);
         }
       }
       else {
         if ($(window).width() <= data.breakpoint) {
-          start(table);
+          start(table, data);
         }
         else {
-          end(table);
+          end(table, data);
         }
       }
     };
 
-    var start = function(table) {
+    var start = function(table, data) {
       table.addClass('bt');
+
+      if (data.tableWrapper) {
+        table.parent('.bt-wrapper').addClass('active');
+      }
     };
 
-    var end = function(table) {
+    var end = function(table, data) {
       table.removeClass('bt');
+
+      if (data.tableWrapper) {
+        table.parent('.bt-wrapper').removeClass('active');
+      }
     };
 
     var destroy = function(table, data) {
@@ -102,10 +114,10 @@
         }
         // Start responsive mode.
         else if (options === 'start') {
-          start(table);
+          start(table, table.data('basictable'));
         }
         else if (options === 'stop') {
-          end(table);
+          end(table, table.data('basictable'));
         }
         else {
           check(table);
@@ -122,13 +134,14 @@
       contentWrap: settings.contentWrap,
       disableResize: settings.disableResize,
       forceResponsive: settings.forceResponsive,
-      noResize: settings.noResize
+      noResize: settings.noResize,
+      tableWrapper: settings.tableWrapper
     };
 
     // Initiate
     table.data('basictable', vars);
 
-    headings(table, table.data('basictable'));
+    setup(table, table.data('basictable'));
 
     if (!vars.noResize) {
       check(table, table.data('basictable'));
@@ -144,6 +157,7 @@
     contentWrap: true,
     disableResize: false,
     forceResponsive: true,
-    noResize: false
+    noResize: false,
+    tableWrapper: false
   };
 })(jQuery);

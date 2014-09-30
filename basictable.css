@@ -27,3 +27,9 @@ table.bt tbody td.bt-hide {
 table.bt tbody td .bt-content {
   vertical-align: top;
 }
+
+.bt-wrapper.active {
+  max-height: 310px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
