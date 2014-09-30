@@ -137,7 +137,6 @@
     var vars = {
       breakpoint: settings.breakpoint,
       contentWrap: settings.contentWrap,
-      disableResize: settings.disableResize,
       forceResponsive: settings.forceResponsive,
       noResize: settings.noResize,
       tableWrapper: settings.tableWrapper
@@ -160,7 +159,6 @@
   $.fn.basictable.defaults = {
     breakpoint: 568,
     contentWrap: true,
-    disableResize: false,
     forceResponsive: true,
     noResize: false,
     tableWrap: false
