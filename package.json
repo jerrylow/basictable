@@ -1,0 +1,24 @@
+{
+  "name": "basictable",
+  "version": "1.0.0",
+  "description": "Basic Table jQuery plugin for simple responsive tables.",
+  "main": [
+    "jquery.basictable.js",
+    "basictable.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerrylow/basictable.git"
+  },
+  "keywords": [
+    "jquer",
+    "js",
+    "css"
+  ],
+  "author": "Jerry Low <hello@jerrylow.com> (http://www.jerrylow.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jerrylow/basictable/issues"
+  },
+  "homepage": "http://www.jerrylow.com/basictable/"
+}

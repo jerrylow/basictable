@@ -1,0 +1,14 @@
+{
+  "name": "basictable",
+  "version": "1.0.0",
+  "license" : "MIT",
+  "main": [
+    "jquery.basictable.js",
+    "basictable.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "**/*.md",
+    "**/*.json"
+  ]
+}
