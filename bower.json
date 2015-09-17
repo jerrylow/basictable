@@ -1,7 +1,7 @@
 {
   "name": "basictable",
-  "version": "1.0.0",
-  "license" : "MIT",
+  "version": "1.0.1",
+  "license": "MIT",
   "main": [
     "jquery.basictable.js",
     "basictable.css"
@@ -9,6 +9,23 @@
   "ignore": [
     "**/.*",
     "**/*.md",
-    "**/*.json"
+    "**/*.json",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/jerrylow/basictable",
+  "authors": [
+    "jerrylow <lowjer@gmail.com>"
+  ],
+  "description": "Basic Table jQuery plugin for simple responsive tables.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "responsive",
+    "table",
+    "jquery"
   ]
 }
