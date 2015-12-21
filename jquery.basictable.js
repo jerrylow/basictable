@@ -125,7 +125,7 @@
           end(table, table.data('basictable'));
         }
         else {
-          check(table);
+          check(table, table.data('basictable'));
         }
       }
       return false;
