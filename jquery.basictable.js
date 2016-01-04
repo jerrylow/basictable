@@ -12,8 +12,8 @@
 
       var format = '';
 
-      if (table.find('thead th').length) {
-        format = 'thead th';
+      if (table.find('thead tr th').length) {
+        format = 'thead tr th';
       }
       else if (table.find('th').length) {
         format = 'tr:first th';
@@ -22,22 +22,52 @@
         format = 'tr:first td';
       }
 
+      var headings = [];
+
       $.each(table.find(format), function() {
         var $heading = $(this);
+        var colspan = parseInt($heading.attr('colspan'), 10) || 1;
+        var row = $heading.closest('tr').index();
 
-        $.each(table.find('tbody tr'), function() {
-          var $cell = $(this).find('td:eq(' + $heading.index() + ')');
+        if (!headings[row]) {
+          headings[row] = [];
+        }
 
-          if ($cell.html() === '' || $cell.html() === '&nbsp;') {
+        for (var i = 0; i < colspan; i++) {
+          headings[row].push($heading);
+        }
+      });
+
+      $.each(table.find('tbody tr'), function() {
+        var $row = $(this);
+        var cellIndex = 0;
+
+        $row.children().each(function() {
+          var $cell = $(this);
+
+          if ($cell.html().trim() === '' || $cell.html() === '&nbsp;') {
             $cell.addClass('bt-hide');
           }
           else {
-            $cell.attr('data-th', $heading.text());
+            for (var i = 0; i < headings.length; i++) {
+              var $heading = $(headings[i][cellIndex]);
 
-            if (data.contentWrap) {
-              $cell.wrapInner('<span class="bt-content"></span>');
+              if ($heading.html() !== '' && $heading.html() !== '&nbsp;') {
+                if( $cell.attr('data-th') ) {
+                  $cell.attr('data-th', $cell.attr('data-th') + ': ' + $heading.text());
+                }
+                else {
+                  $cell.attr('data-th', $heading.text());
+                }
+
+                if (data.contentWrap && !$cell.children().hasClass('bt-content')) {
+                    $cell.wrapInner('<span class="bt-content" />');
+                }
+              }
             }
           }
+
+          cellIndex += $cell.attr('colspan') || 1;
         });
       });
     };
