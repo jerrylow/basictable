@@ -7,12 +7,14 @@ table.bt thead {
   display: none;
 }
 
+table.bt tfoot th,
 table.bt tbody td {
   border: none;
   display: block;
   vertical-align: top;
 }
 
+table.bt tfoot th:before,
 table.bt tbody td:before {
   content: attr(data-th) ": ";
   font-weight: bold;

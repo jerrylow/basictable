@@ -12,7 +12,7 @@
 
       var format = '';
 
-      if (table.find('thead th').length) {
+      if (table.find('thead tr th').length) {
         format = 'thead th';
       }
       else if (table.find('th').length) {
@@ -25,22 +25,32 @@
       $.each(table.find(format), function() {
         var $heading = $(this);
 
+        // Table Body
         $.each(table.find('tbody tr'), function() {
           var $cell = $(this).find('td:eq(' + $heading.index() + ')');
+          setupCell($cell, $heading, data);
+        });
 
-          if ($cell.html() === '' || $cell.html() === '&nbsp;') {
-            $cell.addClass('bt-hide');
-          }
-          else {
-            $cell.attr('data-th', $heading.text());
-
-            if (data.contentWrap) {
-              $cell.wrapInner('<span class="bt-content"></span>');
-            }
-          }
+        // Table Footer
+        $.each(table.find('tfoot tr'), function() {
+          var $cell = $(this).find('th:eq(' + $heading.index() + ')');
+          setupCell($cell, $heading, data);
         });
       });
     };
+
+    var setupCell = function($cell, $heading, data) {
+      if ($cell.html() === '' || $cell.html() === '&nbsp;') {
+        $cell.addClass('bt-hide');
+      }
+      else {
+        $cell.attr('data-th', $heading.text());
+
+        if (data.contentWrap && !$cell.children().hasClass('bt-content')) {
+          $cell.wrapInner('<span class="bt-content"></span>');
+        }
+      }
+    }
 
     var unwrap = function(table) {
       $.each(table.find('td'), function() {
@@ -74,7 +84,7 @@
     var start = function(table, data) {
       table.addClass('bt');
 
-      if (data.tableWrapper) {
+      if (data.tableWrap) {
         table.parent('.bt-wrapper').addClass('active');
       }
     };
@@ -82,7 +92,7 @@
     var end = function(table, data) {
       table.removeClass('bt');
 
-      if (data.tableWrapper) {
+      if (data.tableWrap) {
         table.parent('.bt-wrapper').removeClass('active');
       }
     };
@@ -139,7 +149,7 @@
       contentWrap: settings.contentWrap,
       forceResponsive: settings.forceResponsive,
       noResize: settings.noResize,
-      tableWrapper: settings.tableWrapper
+      tableWrap: settings.tableWrap
     };
 
     // Initiate
