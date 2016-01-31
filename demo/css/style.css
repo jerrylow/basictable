@@ -162,12 +162,14 @@ table tr:nth-of-type(2n+2) td {
 }
 
 table.bt tfoot th,
+table.bt tfoot td,
 table.bt tbody td {
   font-size: .8125rem;
   padding: 0;
 }
 
 table.bt tfoot th:before,
+table.bt tfoot td:before,
 table.bt tbody td:before {
   background: #56a2cf;
   color: white;
@@ -176,6 +178,7 @@ table.bt tbody td:before {
 }
 
 table.bt tfoot th .bt-content,
+table.bt tfoot td .bt-content,
 table.bt tbody td .bt-content {
   display: inline-block;
   padding: 2px 5px;
@@ -183,6 +186,8 @@ table.bt tbody td .bt-content {
 
 table.bt tfoot th:first-of-type:before,
 table.bt tfoot th:first-of-type .bt-content,
+table.bt tfoot td:first-of-type:before,
+table.bt tfoot td:first-of-type .bt-content,
 table.bt tbody td:first-of-type:before,
 table.bt tbody td:first-of-type .bt-content {
   padding-top: 10px;
@@ -190,6 +195,8 @@ table.bt tbody td:first-of-type .bt-content {
 
 table.bt tfoot th:last-of-type:before,
 table.bt tfoot th:last-of-type .bt-content,
+table.bt tfoot td:last-of-type:before,
+table.bt tfoot td:last-of-type .bt-content,
 table.bt tbody td:last-of-type:before,
 table.bt tbody td:last-of-type .bt-content {
   padding-bottom: 10px;

@@ -5,6 +5,8 @@
 
 (function($) {
   $.fn.basictable = function(options) {
+    var headings = [];
+
     var setup = function(table, data) {
       if (data.tableWrap) {
         table.wrap('<div class="bt-wrapper"></div>');
@@ -15,6 +17,9 @@
       if (table.find('thead tr th').length) {
         format = 'thead th';
       }
+      else if (table.find('tbody tr th').length) {
+        format = 'tbody tr th';
+      }
       else if (table.find('th').length) {
         format = 'tr:first th';
       }
@@ -24,33 +29,57 @@
 
       $.each(table.find(format), function() {
         var $heading = $(this);
+        var colspan = parseInt($heading.attr('colspan'), 10) || 1;
+        var row = $heading.closest('tr').index();
 
-        // Table Body
-        $.each(table.find('tbody tr'), function() {
-          var $cell = $(this).find('td:eq(' + $heading.index() + ')');
-          setupCell($cell, $heading, data);
-        });
+        if (!headings[row]) {
+          headings[row] = [];
+        }
 
-        // Table Footer
-        $.each(table.find('tfoot tr'), function() {
-          var $cell = $(this).find('th:eq(' + $heading.index() + ')');
-          setupCell($cell, $heading, data);
-        });
+        for (var i = 0; i < colspan; i++) {
+          headings[row].push($heading);
+        }
+      });
+
+      // Table Body
+      $.each(table.find('tbody tr'), function() {
+        setupRow($(this), data);
+      });
+
+      // Table Footer
+      $.each(table.find('tfoot tr'), function() {
+        setupRow($(this), data);
       });
     };
 
-    var setupCell = function($cell, $heading, data) {
-      if ($cell.html() === '' || $cell.html() === '&nbsp;') {
-        $cell.addClass('bt-hide');
-      }
-      else {
-        $cell.attr('data-th', $heading.text());
+    var setupRow = function($row, data) {
+      $row.children().each(function() {
+        var $cell = $(this);
 
-        if (data.contentWrap && !$cell.children().hasClass('bt-content')) {
-          $cell.wrapInner('<span class="bt-content"></span>');
+        if ($cell.html() === '' || $cell.html() === '&nbsp;') {
+          $cell.addClass('bt-hide');
         }
-      }
-    }
+        else {
+          var cellIndex = $cell.index();
+          var headingText = '';
+
+          for (var j = 0; j < headings.length; j++) {
+            if (j != 0) {
+              headingText += ': ';
+            }
+
+            var $heading = headings[j][cellIndex];
+            headingText += $heading.text();
+          }
+
+          $cell.attr('data-th', headingText);
+
+          if (data.contentWrap && !$cell.children().hasClass('bt-content')) {
+            $cell.wrapInner('<span class="bt-content" />');
+          }
+        }
+      });
+    };
 
     var unwrap = function(table) {
       $.each(table.find('td'), function() {
