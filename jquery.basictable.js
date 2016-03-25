@@ -5,9 +5,10 @@
 
 (function($) {
   $.fn.basictable = function(options) {
-    var headings = [];
 
     var setup = function(table, data) {
+      var headings = [];
+
       if (data.tableWrap) {
         table.wrap('<div class="bt-wrapper"></div>');
       }
@@ -43,16 +44,16 @@
 
       // Table Body
       $.each(table.find('tbody tr'), function() {
-        setupRow($(this), data);
+        setupRow($(this), headings, data);
       });
 
       // Table Footer
       $.each(table.find('tfoot tr'), function() {
-        setupRow($(this), data);
+        setupRow($(this), headings, data);
       });
     };
 
-    var setupRow = function($row, data) {
+    var setupRow = function($row, headings, data) {
       $row.children().each(function() {
         var $cell = $(this);
 
@@ -147,52 +148,54 @@
     };
 
     // Get table.
-    var table = this;
+    this.each(function() {
+      var table = $(this);
 
-    // If table has already executed.
-    if (table.length === 0 || table.data('basictable')) {
-      if (table.data('basictable')) {
-        // Destroy basic table.
-        if (options == 'destroy') {
-          destroy(table, table.data('basictable'));
+      // If table has already executed.
+      if (table.length === 0 || table.data('basictable')) {
+        if (table.data('basictable')) {
+          // Destroy basic table.
+          if (options == 'destroy') {
+            destroy(table, table.data('basictable'));
+          }
+          // Start responsive mode.
+          else if (options === 'start') {
+            start(table, table.data('basictable'));
+          }
+          else if (options === 'stop') {
+            end(table, table.data('basictable'));
+          }
+          else {
+            check(table, table.data('basictable'));
+          }
         }
-        // Start responsive mode.
-        else if (options === 'start') {
-          start(table, table.data('basictable'));
-        }
-        else if (options === 'stop') {
-          end(table, table.data('basictable'));
-        }
-        else {
-          check(table, table.data('basictable'));
-        }
+        return false;
       }
-      return false;
-    }
 
-    // Extend Settings.
-    var settings = $.extend({}, $.fn.basictable.defaults, options);
+      // Extend Settings.
+      var settings = $.extend({}, $.fn.basictable.defaults, options);
 
-    var vars = {
-      breakpoint: settings.breakpoint,
-      contentWrap: settings.contentWrap,
-      forceResponsive: settings.forceResponsive,
-      noResize: settings.noResize,
-      tableWrap: settings.tableWrap
-    };
+      var vars = {
+        breakpoint: settings.breakpoint,
+        contentWrap: settings.contentWrap,
+        forceResponsive: settings.forceResponsive,
+        noResize: settings.noResize,
+        tableWrap: settings.tableWrap
+      };
 
-    // Initiate
-    table.data('basictable', vars);
+      // Initiate
+      table.data('basictable', vars);
 
-    setup(table, table.data('basictable'));
+      setup(table, table.data('basictable'));
 
-    if (!vars.noResize) {
-      check(table, table.data('basictable'));
+      if (!vars.noResize) {
+        check(table, table.data('basictable'));
 
-      $(window).bind('resize.basictable', function() {
-        resize(table);
-      });
-    }
+        $(window).bind('resize.basictable', function() {
+          resize(table);
+        });
+      }
+    });
   };
 
   $.fn.basictable.defaults = {
