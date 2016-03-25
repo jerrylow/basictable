@@ -57,7 +57,7 @@
       $row.children().each(function() {
         var $cell = $(this);
 
-        if ($cell.html() === '' || $cell.html() === '&nbsp;') {
+        if (($cell.html() === '' || $cell.html() === '&nbsp;') && (!data.showEmptyCells)) {
           $cell.addClass('bt-hide');
         }
         else {
@@ -180,7 +180,8 @@
         contentWrap: settings.contentWrap,
         forceResponsive: settings.forceResponsive,
         noResize: settings.noResize,
-        tableWrap: settings.tableWrap
+        tableWrap: settings.tableWrap,
+        showEmptyCells: settings.showEmptyCells
       };
 
       // Initiate
@@ -203,6 +204,7 @@
     contentWrap: true,
     forceResponsive: true,
     noResize: false,
-    tableWrap: false
+    tableWrap: false,
+    showEmptyCells: false
   };
 })(jQuery);

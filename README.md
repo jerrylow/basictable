@@ -36,6 +36,12 @@ Disable Basic Table's JS resize. The table won't engage in responsive mode unles
 
 When the library is initialize create a div wrapper around the table with class .bt-wrapper. This wrapper will toggle an active class when the table mode changes.
 
+### showEmptyCells
+
+`boolean` `default: false`
+
+When true, empty cells will be shown.
+
 ## Methods
 
 ### start
