@@ -13,6 +13,10 @@ table.bt tfoot td,
 table.bt tbody td {
   border: none;
   display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   vertical-align: top;
 
   /* IE 9 */
@@ -24,9 +28,12 @@ table.bt tfoot th::before,
 table.bt tfoot td::before,
 table.bt tbody td::before {
   content: attr(data-th) ": ";
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
   font-weight: bold;
   width: 6.5em;
-  display: inline-block;
 }
 
 table.bt tfoot th.bt-hide,
