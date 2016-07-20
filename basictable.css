@@ -14,11 +14,15 @@ table.bt tbody td {
   border: none;
   display: block;
   vertical-align: top;
+
+  /* IE 9 */
+  float: left\9;
+  width: 100%\9;
 }
 
-table.bt tfoot th:before,
-table.bt tfoot td:before,
-table.bt tbody td:before {
+table.bt tfoot th::before,
+table.bt tfoot td::before,
+table.bt tbody td::before {
   content: attr(data-th) ": ";
   font-weight: bold;
   width: 6.5em;

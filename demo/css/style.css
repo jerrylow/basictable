@@ -217,6 +217,10 @@ table.bt tbody td:last-of-type .bt-content {
     font-size: .8125rem;
     padding: 0;
     vertical-align: top;
+
+    /* IE 9 */
+    float: left\9;
+    width: 100%\9;
   }
 
   #table-no-resize tbody td:before {
