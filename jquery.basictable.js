@@ -102,7 +102,7 @@
         }
       }
       else {
-        if ($(window).width() <= data.breakpoint) {
+        if ((data.breakpoint !== null && $(window).width() <= data.breakpoint) || (data.containerBreakpoint !== null && table.parent().width() <= data.containerBreakpoint)) {
           start(table, data);
         }
         else {
@@ -177,6 +177,7 @@
 
       var vars = {
         breakpoint: settings.breakpoint,
+        containerBreakpoint: settings.containerBreakpoint,
         contentWrap: settings.contentWrap,
         forceResponsive: settings.forceResponsive,
         noResize: settings.noResize,
@@ -200,7 +201,8 @@
   };
 
   $.fn.basictable.defaults = {
-    breakpoint: 568,
+    breakpoint: null,
+    containerBreakpoint: null,
     contentWrap: true,
     forceResponsive: true,
     noResize: false,
