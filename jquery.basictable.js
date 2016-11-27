@@ -184,6 +184,10 @@
         tableWrap: settings.tableWrap,
         showEmptyCells: settings.showEmptyCells
       };
+      // Maintain the original functionality/defaults
+      if(vars.breakpoint === null && vars.containerBreakpoint === null){
+        vars.breakpoint = 568;
+      }
 
       // Initiate
       table.data('basictable', vars);
@@ -201,7 +205,7 @@
   };
 
   $.fn.basictable.defaults = {
-    breakpoint: null,
+    breakpoint: null, // if containerBreakpoint is also null, 568
     containerBreakpoint: null,
     contentWrap: true,
     forceResponsive: true,
