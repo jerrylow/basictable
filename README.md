@@ -8,9 +8,15 @@ A simple lightweight jQuery responsive table library. A library to setup tables 
 
 ### breakpoint
 
-`integer` `default: 568`
+`integer` `default: null`
 
-Define the breakpoint (viewport's width) when the table will engage in responsive mode. 
+Define the breakpoint (viewport's width) when the table will engage in responsive mode. If the `containerBreakpoint` is `null` (which is the default) the value will be 568px.
+
+### containerBreakpoint
+
+`integer` `default: null`
+
+Define the breakpoint of the table's container when the table will engage in responsive mode. 
 
 ### contentWrap
 

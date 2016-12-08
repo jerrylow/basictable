@@ -5,6 +5,9 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700);
 
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -203,7 +206,40 @@ table.bt tbody td:last-of-type .bt-content {
 }
 
 /*
- * Example 4:
+ * Example 2:
+ * Container breakpoint
+ */
+.clearfix::before,
+.clearfix::after {
+ content: " ";
+ display: table;
+}
+
+.clearfix::after {
+ clear: both;
+}
+
+.col-sm-3 {
+  padding-top: 1em;
+}
+
+@media (min-width: 768px) {
+  .col-sm-3,
+  .col-sm-9 {
+    float: left;
+  }
+
+  .col-sm-3 {
+    padding-left: 2em;
+    width: 25%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+}
+
+/*
+ * Example 5:
  * Media query over js resize
  */
 @media only screen and (max-width: 568px) {
@@ -251,7 +287,7 @@ table.bt tbody td:last-of-type .bt-content {
 }
 
 /*
- * Example 5:
+ * Example 6:
  * Two axis styling
  */
 table.two-axis tr td:first-of-type {
@@ -276,7 +312,7 @@ table.two-axis tr td:first-of-type {
 }
 
 /*
- * Example 6:
+ * Example 7:
  * Max height
  */
 .bt-wrapper.active {
@@ -353,25 +389,4 @@ table {
 .table_horizontal tbody > tr:last-child > td,
 .table_horizontal thead > tr:last-child > td {
   border-bottom-width: 0;
-}
-
-/*Bootstrap*/
-@media (min-width: 768px) {
-  .col-sm-3, .col-sm-9{
-    float: left;
-  }
-  .col-sm-3 {
-    width: 25%;
-  }
-  .col-sm-9 {
-    width: 75%;
-  }
-}
-.row:before,
-.row:after {
-  content: " ";
-  display: table;
-}
-.row:after {
-  clear: both;
 }

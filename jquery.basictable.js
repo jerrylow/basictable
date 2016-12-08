@@ -205,7 +205,7 @@
   };
 
   $.fn.basictable.defaults = {
-    breakpoint: null, // if containerBreakpoint is also null, 568
+    breakpoint: null,
     containerBreakpoint: null,
     contentWrap: true,
     forceResponsive: true,
