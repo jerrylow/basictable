@@ -102,7 +102,7 @@
         }
       }
       else {
-        if ($(window).width() <= data.breakpoint) {
+        if ((data.breakpoint !== null && $(window).width() <= data.breakpoint) || (data.containerBreakpoint !== null && table.parent().width() <= data.containerBreakpoint)) {
           start(table, data);
         }
         else {
@@ -177,12 +177,17 @@
 
       var vars = {
         breakpoint: settings.breakpoint,
+        containerBreakpoint: settings.containerBreakpoint,
         contentWrap: settings.contentWrap,
         forceResponsive: settings.forceResponsive,
         noResize: settings.noResize,
         tableWrap: settings.tableWrap,
         showEmptyCells: settings.showEmptyCells
       };
+      // Maintain the original functionality/defaults
+      if(vars.breakpoint === null && vars.containerBreakpoint === null){
+        vars.breakpoint = 568;
+      }
 
       // Initiate
       table.data('basictable', vars);
@@ -200,7 +205,8 @@
   };
 
   $.fn.basictable.defaults = {
-    breakpoint: 568,
+    breakpoint: null, // if containerBreakpoint is also null, 568
+    containerBreakpoint: null,
     contentWrap: true,
     forceResponsive: true,
     noResize: false,

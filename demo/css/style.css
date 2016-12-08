@@ -355,3 +355,23 @@ table {
   border-bottom-width: 0;
 }
 
+/*Bootstrap*/
+@media (min-width: 768px) {
+  .col-sm-3, .col-sm-9{
+    float: left;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
