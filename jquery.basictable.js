@@ -13,34 +13,37 @@
         table.wrap('<div class="bt-wrapper"></div>');
       }
 
-      var format = '';
+      // Table Header
+      if (data.header) {
+        var format = '';
 
-      if (table.find('thead tr th').length) {
-        format = 'thead th';
-      }
-      else if (table.find('tbody tr th').length) {
-        format = 'tbody tr th';
-      }
-      else if (table.find('th').length) {
-        format = 'tr:first th';
-      }
-      else {
-        format = 'tr:first td';
-      }
-
-      $.each(table.find(format), function() {
-        var $heading = $(this);
-        var colspan = parseInt($heading.attr('colspan'), 10) || 1;
-        var row = $heading.closest('tr').index();
-
-        if (!headings[row]) {
-          headings[row] = [];
+        if (table.find('thead tr th').length) {
+          format = 'thead th';
+        }
+        else if (table.find('tbody tr th').length) {
+          format = 'tbody tr th';
+        }
+        else if (table.find('th').length) {
+          format = 'tr:first th';
+        }
+        else {
+          format = 'tr:first td';
         }
 
-        for (var i = 0; i < colspan; i++) {
-          headings[row].push($heading);
-        }
-      });
+        $.each(table.find(format), function() {
+          var $heading = $(this);
+          var colspan = parseInt($heading.attr('colspan'), 10) || 1;
+          var row = $heading.closest('tr').index();
+
+          if (!headings[row]) {
+            headings[row] = [];
+          }
+
+          for (var i = 0; i < colspan; i++) {
+            headings[row].push($heading);
+          }
+        });
+      }
 
       // Table Body
       $.each(table.find('tbody tr'), function() {
@@ -62,6 +65,7 @@
         }
         else {
           var cellIndex = $cell.index();
+
           var headingText = '';
 
           for (var j = 0; j < headings.length; j++) {
@@ -114,13 +118,17 @@
     var start = function(table, data) {
       table.addClass('bt');
 
+      if (!data.header) {
+        table.addClass('bt--no-header');
+      }
+
       if (data.tableWrap) {
         table.parent('.bt-wrapper').addClass('active');
       }
     };
 
     var end = function(table, data) {
-      table.removeClass('bt');
+      table.removeClass('bt bt--no-header');
 
       if (data.tableWrap) {
         table.parent('.bt-wrapper').removeClass('active');
@@ -128,6 +136,7 @@
     };
 
     var destroy = function(table, data) {
+      table.removeClass('bt bt--no-header');
       table.find('td').removeAttr('data-th');
 
       if (data.tableWrap) {
@@ -182,7 +191,8 @@
         forceResponsive: settings.forceResponsive,
         noResize: settings.noResize,
         tableWrap: settings.tableWrap,
-        showEmptyCells: settings.showEmptyCells
+        showEmptyCells: settings.showEmptyCells,
+        header: settings.header
       };
       // Maintain the original functionality/defaults
       if(vars.breakpoint === null && vars.containerBreakpoint === null){
@@ -211,6 +221,7 @@
     forceResponsive: true,
     noResize: false,
     tableWrap: false,
-    showEmptyCells: false
+    showEmptyCells: false,
+    header: true
   };
 })(jQuery);

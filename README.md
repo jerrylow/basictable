@@ -16,7 +16,7 @@ Define the breakpoint (viewport's width) when the table will engage in responsiv
 
 `integer` `default: null`
 
-Define the breakpoint of the table's container when the table will engage in responsive mode. 
+Define the breakpoint of the table's container when the table will engage in responsive mode.
 
 ### contentWrap
 
@@ -47,6 +47,12 @@ When the library is initialize create a div wrapper around the table with class 
 `boolean` `default: false`
 
 When true, empty cells will be shown.
+
+### header
+
+`boolean` `default: true`
+
+Set to false if table does not have a header row. Table will just be responsive with table body and optional footer.
 
 ## Methods
 

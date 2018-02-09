@@ -53,3 +53,8 @@ table.bt tbody td .bt-content {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+table.bt.bt--no-header tfoot td::before,
+table.bt.bt--no-header tbody td::before {
+  display: none;
+}
