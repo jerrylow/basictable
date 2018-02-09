@@ -3,6 +3,14 @@
  * Author: Jerry Low
  */
 
+table.bt tbody tr:first-child {
+		display: none;
+}
+
+table.bt thead + tbody tr:first-child {
+  display: table-row;
+}
+
 table.bt thead,
 table.bt tbody th {
   display: none;
