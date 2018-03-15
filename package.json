@@ -1,0 +1,25 @@
+{
+  "name": "basictable",
+  "version": "1.0.8",
+  "description": "Basic Table jQuery plugin for simple responsive tables.",
+  "main": "jquery.basictable.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "uglifyjs jquery.basictable.js > jquery.basictable.min.js -c -m --comments"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerrylow/basictable.git"
+  },
+  "keywords": [
+    "jquery",
+    "table",
+    "responsive"
+  ],
+  "author": "jerrylow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jerrylow/basictable/issues"
+  },
+  "homepage": "https://github.com/jerrylow/basictable#readme"
+}

@@ -1,6 +1,5 @@
 /*
- * jQuery Basic Table
- * Author: Jerry Low
+ * @license jQuery Basictable | MIT | Jerry Low | https://www.github.com/jerrylow/basictable
  */
 
 (function($) {
