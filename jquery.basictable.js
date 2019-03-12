@@ -162,19 +162,26 @@
       // If table has already executed.
       if (table.length === 0 || table.data('basictable')) {
         if (table.data('basictable')) {
+          var data = table.data('basictable')
           // Destroy basic table.
-          if (options == 'destroy') {
-            destroy(table, table.data('basictable'));
+          if (options === 'destroy') {
+            destroy(table, data);
+          }
+          else if (options === 'restart') {
+            destroy(table, data);
+            table.data('basictable', data);
+            setup(table, data);
+            check(table, data);
           }
           // Start responsive mode.
           else if (options === 'start') {
-            start(table, table.data('basictable'));
+            start(table, data);
           }
           else if (options === 'stop') {
-            end(table, table.data('basictable'));
+            end(table, data);
           }
           else {
-            check(table, table.data('basictable'));
+            check(table, data);
           }
         }
         return false;

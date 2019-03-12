@@ -79,3 +79,11 @@ Destroy the the responsive bind on the table. This will remove all data and gene
 ```js
 $('table').basictable('destroy');
 ```
+
+### restart
+
+Run `destroy`, `setup` then `check` without resetting the table data. Run this if the table dynamically updates.
+
+```js
+$('table').basictable('restart');
+```
