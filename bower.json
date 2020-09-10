@@ -1,6 +1,6 @@
 {
   "name": "basictable",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "license": "MIT",
   "main": [
     "jquery.basictable.js",
