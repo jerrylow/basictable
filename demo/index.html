@@ -12,7 +12,7 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#table').basictable();
+      $('.table').basictable();
 
       $('#table-breakpoint').basictable({
         breakpoint: 768
@@ -37,7 +37,7 @@
       $('#table-two-axis').basictable();
 
       $('#table-max-height').basictable({
-        tableWrapper: true
+        tableWrap: true
       });
     });
   </script>
@@ -51,15 +51,15 @@
   <h2>Basic Implementation</h2>
   <p>The basic implementation using all default settigs. The table will use responsive mode when the viewport is less or equal to 568px in width.</p>
 
-  <table id="table">
+  <table class="table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-        <th>Height</th>
-        <th>Province</th>
-        <th>Sport</th>
+        <th>One</th>
+        <th>Two</th>
+        <th>Three</th>
+        <th>Four</th>
+        <th>Five</th>
+        <th>Six</th>
       </tr>
     </thead>
     <tbody>
@@ -72,11 +72,11 @@
         <td>Volleyball</td>
       </tr>
       <tr>
-        <td>John Stone</td>
         <td>30</td>
         <td>Male</td>
         <td>5'9</td>
         <td>Ontario</td>
+        <td>Badminton</td>
         <td>Badminton</td>
       </tr>
       <tr>
@@ -307,7 +307,7 @@
   </code>
 
   <h3>Max Height</h3>
-  <p>Some tables could get very long in responsive. You could set a max-height in mobile where scrolling within the table would happen. Turn on tableWrapper to get a container around the table that toggles an active class. You could also just create your own wrapper and match the breakpoint to do this.</p>
+  <p>Some tables could get very long in responsive. You could set a max-height in mobile where scrolling within the table would happen. Turn on tableWrap to get a container around the table that toggles an active class. You could also just create your own wrapper and match the breakpoint to do this.</p>
 
   <table id="table-max-height" class="max-height">
     <thead>
@@ -366,7 +366,7 @@
 
   <code class="js">
     $('#table-max-height').basictable({<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;tableWrapper: true<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;tableWrap: true<br />
     });
   </code>
 
