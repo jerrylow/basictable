@@ -20,9 +20,11 @@ These changes should have no impact on the way it functions in comparison with 1
 
 ### jQuery
 
-Include the jQuery library in the `<head>` of your page.
+Include the CSS and jQuery library in the `<head>` of your page.
 
 ```
+<link rel="stylesheet" type="text/css" href="basictable.min.css" />
+
 <script src="jquery.min.js"></script>
 <script type="text/javascript" src="jquery.basictable.min.js"></script>
 ```
@@ -35,9 +37,11 @@ $('table').basictable();
 
 ### Vanilla JS
 
-Include the basictable library in the `<head>` of your page.
+Include the CSS and basictable library in the `<head>` of your page.
 
 ```
+<link rel="stylesheet" type="text/css" href="basictable.min.css" />
+
 <script type="text/javascript" src="basictable.min.js"></script>
 ```
 
