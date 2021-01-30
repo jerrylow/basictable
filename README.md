@@ -16,6 +16,37 @@ The jQuery version remains the same as 1.0.0. While the source remains unchanged
 
 These changes should have no impact on the way it functions in comparison with 1.x.
 
+## Getting Started
+
+### jQuery
+
+Include the jQuery library in the `<head>` of your page.
+
+```
+<script src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.basictable.min.js"></script>
+```
+
+Initiate on any table(s) with:
+
+```
+$('table').basictable();
+```
+
+### Vanilla JS
+
+Include the basictable library in the `<head>` of your page.
+
+```
+<script type="text/javascript" src="basictable.min.js"></script>
+```
+
+Initiate on any table(s) with:
+
+```
+new basictable('table');
+```
+
 ## Options
 
 Options are applicable to both the jQuery and Vanilla JS.
