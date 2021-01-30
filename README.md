@@ -131,7 +131,7 @@ table.stop();
 Destroy the the responsive bind on the table. This will remove all data and generated wrappers from the table, returning it to its initial state.
 
 ```js
-table.stop();
+table.destroy();
 ```
 
 ### restart
