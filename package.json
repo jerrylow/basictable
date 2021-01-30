@@ -1,11 +1,15 @@
 {
   "name": "basictable",
-  "version": "1.1.0",
-  "description": "Basic Table jQuery plugin for simple responsive tables.",
+  "version": "2.0.0",
+  "description": "Basic Table jQuery and Vanilla JS plugin for simple responsive tables.",
   "main": "jquery.basictable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "uglifyjs jquery.basictable.js > jquery.basictable.min.js -c -m --comments"
+    "compile-js": "terser src/js/basictable.js --output dist/js/basictable.min.js -c -m --comments && terser src/js/basictable.js --output dist/js/basictable.js -b indent_level=2",
+    "compile-jquery": "terser src/js/jquery.basictable.js --output dist/js/jquery.basictable.min.js -c -m --comments && terser src/js/jquery.basictable.js --output dist/js/jquery.basictable.js -b indent_level=2",
+    "compile-css": "uglifycss src/css/basictable.css > dist/css/basictable.min.css --ugly-comments && beautify-css src/css/basictable.css dist/css/basictable.css",
+    "compile": "yarn compile-js && yarn compile-jquery && compile-css",
+    "lint": "yarn standard src/js/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +25,16 @@
   "bugs": {
     "url": "https://github.com/jerrylow/basictable/issues"
   },
-  "homepage": "https://github.com/jerrylow/basictable#readme"
+  "homepage": "https://github.com/jerrylow/basictable#readme",
+  "dependencies": {
+    "beautify-css": "^1.0.0",
+    "standard": "^16.0.3",
+    "terser": "^5.5.1",
+    "uglifycss": "^0.0.29"
+  },
+  "standard": {
+    "globals": [
+      "jQuery"
+    ]
+  }
 }
