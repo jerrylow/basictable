@@ -2,9 +2,9 @@
 
 A simple lightweight jQuery or Vanilla JS responsive table library. A library to setup tables for a basic responsive table stucture. Utilizing the techniques of http://css-tricks.com/responsive-data-tables/. This is to assists in those situations where the users don't necessarily have access or capacity to modify HTML such as input from a WYSIWYG.
 
-**[View Demo (jQuery)](http://www.jerrylow.com/basictable/demo/jquery.html)**
+**[View Demo (jQuery)](http://www.jerrylow.com/basictable/demo/index.html)**
 
-**[View Demo (Vanilla JS)](http://www.jerrylow.com/basictable/demo/vanilla-js)**
+**[View Demo (Vanilla JS)](http://www.jerrylow.com/basictable/demo/vanilla-js.html)**
 
 ## jQuery User Notes for 2.0.0
 
