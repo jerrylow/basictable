@@ -2,45 +2,12 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no"/>
-  <title>Basic Table Demo</title>
+  <title>Basic Table (Vanilla JS) Demo</title>
 
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" type="text/css" href="../basictable.css" />
+  <link rel="stylesheet" type="text/css" href="../dist/css/basictable.min.css" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../jquery.basictable.min.js"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.table').basictable();
-
-      $('#table-breakpoint').basictable({
-        breakpoint: 768
-      });
-
-      $('#table-container-breakpoint').basictable({
-        containerBreakpoint: 485
-      });
-
-      $('#table-swap-axis').basictable({
-        swapAxis: true
-      });
-
-      $('#table-force-off').basictable({
-        forceResponsive: false
-      });
-
-      $('#table-no-resize').basictable({
-        noResize: true
-      });
-
-      $('#table-two-axis').basictable();
-
-      $('#table-max-height').basictable({
-        tableWrap: true
-      });
-    });
-  </script>
+  <script type="text/javascript" src="../dist/js/basictable.min.js"></script>
 </head>
 
 <body>
@@ -54,12 +21,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th>One</th>
-        <th>Two</th>
-        <th>Three</th>
-        <th>Four</th>
-        <th>Five</th>
-        <th>Six</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Height</th>
+        <th>Province</th>
+        <th>Sport</th>
       </tr>
     </thead>
     <tbody>
@@ -107,13 +74,13 @@
   </table>
 
   <code class="js">
-    $('#table').basictable();
+    new basictable('.table');
   </code>
 
   <h2>Modifying Breakpoint</h2>
   <p>Manually set the breakpoint per table. Setting the breakpoint to 768px so responsive styles will be applied on a typically tablet, portrait mode.</p>
 
-  <table id="table-breakpoint">
+  <table id="table-breakpoint" class="table">
     <thead>
       <tr>
         <th>Name</th>
@@ -169,7 +136,7 @@
   </table>
 
   <code class="js">
-    $('#table-breakpoint').basictable({<br />
+    new basictable('#table-breakpoint', {<br />
     &nbsp;&nbsp;&nbsp;&nbsp;breakpoint: 768,<br />
     });
   </code>
@@ -236,7 +203,7 @@
     <div class="col-sm-3">Other stuff is taking up space in this column. Perhaps, this is a page with a sidebar on larger screens.</div>
   </div>
   <code class="js">
-    $('#table-container-breakpoint').basictable({<br />
+    new basictable('#table-container-breakpoint', {<br />
     &nbsp;&nbsp;&nbsp;&nbsp;containerBreakpoint: 485,<br />
     });
   </code>
@@ -301,7 +268,7 @@
   </table>
 
   <code class="js">
-    $('#table-force-off').basictable({<br />
+    new basictable('#table-force-off', {<br />
     &nbsp;&nbsp;&nbsp;&nbsp;forceResponsive: false,<br />
     });
   </code>
@@ -365,7 +332,7 @@
   </table>
 
   <code class="js">
-    $('#table-max-height').basictable({<br />
+    new basictable('#table-max-height', {<br />
     &nbsp;&nbsp;&nbsp;&nbsp;tableWrap: true<br />
     });
   </code>
@@ -455,7 +422,7 @@
   </code>
 
   <code class="js">
-    $('#table-no-resize').basictable({<br />
+    new basictable('#table-no-resize', {<br />
     &nbsp;&nbsp;&nbsp;&nbsp;noResize: true,<br />
     });
   </code>
@@ -540,5 +507,32 @@
 
   <p class="credits"><span class="phone-block"><strong>Author:</strong> Jerry Low (<a href="https://twitter.com/jerrylowm" target="_blank">@jerrylowm</a>)</span><span class="phone-hide">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span class="phone-block"><strong>Palette Design:</strong> Amit Jakhu (<a href="https://twitter.com/amitjakhu">@amitjakhu</a>)</span>
 </div>
+
+
+<script type="text/javascript">
+  const table = new basictable('.table');
+
+  new basictable('#table-breakpoint', {
+    breakpoint: 768,
+  });
+
+  new basictable('#table-container-breakpoint', {
+    containerBreakpoint: 485,
+  });
+
+  new basictable('#table-force-off', {
+    forceResponsive: false,
+  });
+
+  new basictable('#table-max-height', {
+    tableWrap: true
+  });
+
+  new basictable('#table-no-resize', {
+    noResize: true,
+  });
+
+  new basictable('#table-two-axis');
+</script>
 </body>
 </html>
