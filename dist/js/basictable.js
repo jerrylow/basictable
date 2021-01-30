@@ -5,9 +5,19 @@
 
 class basictable {
   constructor(tableSel, options = {}) {
+    const _defaultOptions = {
+      breakpoint: null,
+      containerBreakpoint: null,
+      contentWrap: true,
+      forceResponsive: true,
+      noResize: false,
+      tableWrap: false,
+      showEmptyCells: false,
+      header: true
+    };
     this.tableSel = tableSel;
     this.options = {
-      ...this._defaultOptions,
+      ..._defaultOptions,
       ...options
     };
     if (this.options.breakpoint === null && this.options.containerBreakpoint === null) {
@@ -16,10 +26,10 @@ class basictable {
     this._getTables();
     this._setup();
   }
-  _getTables=() => {
+  _getTables() {
     this.tables = document.querySelectorAll(this.tableSel);
-  };
-  _setup=() => {
+  }
+  _setup() {
     this.tables.forEach((table => {
       table.setAttribute("data-bt-active", true);
       const headings = [];
@@ -62,8 +72,8 @@ class basictable {
       this._tableResizeEvent = () => this._resize();
       window.addEventListener("resize", this._tableResizeEvent);
     }
-  };
-  _setupRow=(row, headings) => {
+  }
+  _setupRow(row, headings) {
     row.querySelectorAll(":scope > *").forEach((cell => {
       if ((cell.innerHTML.trim() === "" || cell.innerHTML === "&nbsp;") && this.options.showEmptyCells) {
         cell.classList("bt-hide");
@@ -71,7 +81,7 @@ class basictable {
         const cellIndex = [].indexOf.call(cell.parentElement.children, cell);
         let headingText = "";
         for (let j = 0; j < headings.length; j++) {
-          if (j != 0) {
+          if (j !== 0) {
             headingText += ": ";
           }
           const heading = headings[j][cellIndex];
@@ -88,8 +98,8 @@ class basictable {
         }
       }
     }));
-  };
-  _check=table => {
+  }
+  _check(table) {
     if (!this.options.forceResponsive) {
       table.classList.remove("bt");
       const tableSize = table.getBoundingClientRect().left + table.offsetWidth;
@@ -105,8 +115,8 @@ class basictable {
         this._end(table);
       }
     }
-  };
-  _start=table => {
+  }
+  _start(table) {
     table.classList.add("bt");
     if (!this.options.header) {
       table.classList.add("bt--no-header");
@@ -114,36 +124,37 @@ class basictable {
     if (this.options.tableWrap) {
       table.closest(".bt-wrapper").classList.add("active");
     }
-  };
-  _end=table => {
+  }
+  _end(table) {
     table.classList.remove("bt", "bt--no-header");
     if (this.options.tableWrap) {
       table.closest(".bt-wrapper").classList.remove("active");
     }
-  };
-  _resize=table => {
+  }
+  _resize(table) {
+    console.log("resize");
     this.tables.forEach((table => {
       if (table.getAttribute("data-bt-active")) {
         this._check(table);
       }
     }));
-  };
-  start=() => {
+  }
+  start() {
     this.tables.forEach((table => {
       this._start(table);
     }));
-  };
-  stop=() => {
+  }
+  stop() {
     this.tables.forEach((table => {
       this._end(table);
     }));
-  };
-  restart=() => {
+  }
+  restart() {
     this.destroy();
     this._getTables();
     this._setup();
-  };
-  destroy=() => {
+  }
+  destroy() {
     this.tables.forEach((table => {
       if (table.getAttribute("data-bt-active")) {
         table.classList.remove("bt", "bt--no-header");
@@ -166,16 +177,6 @@ class basictable {
     if (!this.options.noResize) {
       window.removeEventListener("resize", this._tableResizeEvent);
     }
-  };
-  _defaultOptions={
-    breakpoint: null,
-    containerBreakpoint: null,
-    contentWrap: true,
-    forceResponsive: true,
-    noResize: false,
-    tableWrap: false,
-    showEmptyCells: false,
-    header: true
-  };
+  }
 }
 
