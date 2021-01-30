@@ -132,7 +132,6 @@ class basictable {
     }
   }
   _resize(table) {
-    console.log("resize");
     this.tables.forEach((table => {
       if (table.getAttribute("data-bt-active")) {
         this._check(table);

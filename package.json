@@ -1,6 +1,6 @@
 {
   "name": "basictable",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Basic Table jQuery and Vanilla JS plugin for simple responsive tables.",
   "main": "jquery.basictable.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "compile-js": "terser src/js/basictable.js --output dist/js/basictable.min.js -c -m --comments && terser src/js/basictable.js --output dist/js/basictable.js -b indent_level=2",
     "compile-jquery": "terser src/js/jquery.basictable.js --output dist/js/jquery.basictable.min.js -c -m --comments && terser src/js/jquery.basictable.js --output dist/js/jquery.basictable.js -b indent_level=2",
     "compile-css": "uglifycss src/css/basictable.css > dist/css/basictable.min.css --ugly-comments && beautify-css src/css/basictable.css dist/css/basictable.css",
-    "compile": "yarn compile-js && yarn compile-jquery && compile-css",
+    "compile": "yarn compile-js && yarn compile-jquery && yarn compile-css",
     "lint": "yarn standard src/js/*.js"
   },
   "repository": {
