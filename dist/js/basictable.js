@@ -46,9 +46,9 @@ class basictable {
         } else if (table.querySelectorAll("tbody tr th").length) {
           format = "tbody tr th";
         } else if (table.querySelectorAll("th").length) {
-          format = "tr:first th";
+          format = "tr:first-of-type th";
         } else {
-          format = "tr:first td";
+          format = "tr:first-of-type td";
         }
         table.querySelectorAll(format).forEach((heading => {
           const colspan = parseInt(heading.getAttribute("colspan"), 10) || 1;
@@ -178,4 +178,3 @@ class basictable {
     }
   }
 }
-
