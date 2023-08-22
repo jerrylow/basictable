@@ -102,7 +102,7 @@ class basictable {
   _check(table) {
     if (!this.options.forceResponsive) {
       table.classList.remove("bt");
-      const tableSize = table.getBoundingClientRect().left + table.offsetWidth;
+      const tableSize = table.offsetLeft + table.offsetWidth;
       if (tableSize > table.parentElement.offsetWidth) {
         this._start(table);
       } else {
