@@ -1,6 +1,6 @@
 {
   "name": "basictable",
-  "version": "2.1.0",
+  "version": "2.0.4",
   "description": "Basic Table jQuery and Vanilla JS plugin for simple responsive tables.",
   "main": "jquery.basictable.js",
   "scripts": {
