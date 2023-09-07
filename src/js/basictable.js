@@ -125,14 +125,22 @@ class basictable { // eslint-disable-line no-unused-vars
     })
   }
 
+  _getInnerWidth (el) {
+    const computedStyle = window.getComputedStyle(el);
+    const border = parseFloat(computedStyle.borderLeft) + parseFloat(computedStyle.borderRight);
+    const padding = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+
+    return parseFloat(computedStyle.width) - (border + padding);
+  }
+
   _check (table) {
     // Only change when table is larger than parent if force
     // responsive is turned off.
     if (!this.options.forceResponsive) {
       table.classList.remove('bt')
-      const tableSize = table.offsetLeft + table.offsetWidth
+      const tableSize = table.offsetWidth;
 
-      if (tableSize > table.parentElement.offsetWidth) {
+      if (tableSize > this._getInnerWidth(table.parentElement)) {
         this._start(table)
       } else {
         this._end(table)
