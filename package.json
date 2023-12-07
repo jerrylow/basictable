@@ -1,6 +1,6 @@
 {
   "name": "basictable",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Basic Table jQuery and Vanilla JS plugin for simple responsive tables.",
   "main": "jquery.basictable.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "url": "https://github.com/jerrylow/basictable/issues"
   },
   "homepage": "https://github.com/jerrylow/basictable#readme",
-  "dependencies": {
+  "devDependencies": {
     "beautify-css": "^1.0.0",
     "standard": "^16.0.3",
     "terser": "^5.5.1",
