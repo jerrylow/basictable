@@ -126,11 +126,11 @@ class basictable { // eslint-disable-line no-unused-vars
   }
 
   _getInnerWidth (el) {
-    const computedStyle = window.getComputedStyle(el);
-    const border = parseFloat(computedStyle.borderLeft) + parseFloat(computedStyle.borderRight);
-    const padding = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+    const computedStyle = window.getComputedStyle(el)
+    const border = parseFloat(computedStyle.borderLeft) + parseFloat(computedStyle.borderRight)
+    const padding = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight)
 
-    return parseFloat(computedStyle.width) - (border + padding);
+    return parseFloat(computedStyle.width) - (border + padding)
   }
 
   _check (table) {
@@ -138,7 +138,7 @@ class basictable { // eslint-disable-line no-unused-vars
     // responsive is turned off.
     if (!this.options.forceResponsive) {
       table.classList.remove('bt')
-      const tableSize = table.offsetWidth;
+      const tableSize = table.offsetWidth
 
       if (tableSize > this._getInnerWidth(table.parentElement)) {
         this._start(table)
