@@ -28,7 +28,7 @@
   "homepage": "https://github.com/jerrylow/basictable#readme",
   "devDependencies": {
     "beautify-css": "^1.0.0",
-    "standard": "^16.0.3",
+    "standard": "^17.1.2",
     "terser": "^5.5.1",
     "uglifycss": "^0.0.29"
   },
